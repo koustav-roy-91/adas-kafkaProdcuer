@@ -1,0 +1,32 @@
+server:
+  port: 8081
+
+management:
+  endpoint:
+    health:
+      enabled: true
+      show-details: "always"
+  endpoints:
+    web:
+      exposure:
+        include: health,info,loggers
+      base-path: /
+
+
+logging:
+  level:
+    com.app: DEBUG
+    org.apache: INFO
+    com.kafka: WARN
+    org.springframework: INFO
+
+
+kafka:
+  producer:
+    bootstrapAddress: localhost:9092
+    retries: 1
+    batch.size: 4096
+    linger: 1
+    buffer.memory: 40960
+    acks: 1
+    topic: adas-main
